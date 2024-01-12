@@ -1,0 +1,120 @@
+import sqlite3
+
+# Create a SQLite database or connect to an existing one.
+conn = sqlite3.connect("school.db")
+cursor = conn.cursor()
+
+# Create tables for students, teachers, courses, and enrollments.
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS students (
+        student_id INTEGER PRIMARY KEY,
+        name TEXT,
+        grade INTEGER
+    )
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS teachers (
+        teacher_id INTEGER PRIMARY KEY,
+        name TEXT
+    )
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS courses (
+        course_id INTEGER PRIMARY KEY,
+        title TEXT,
+        teacher_id INTEGER
+    )
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS enrollments (
+        enrollment_id INTEGER PRIMARY KEY,
+        student_id INTEGER,
+        course_id INTEGER
+    )
+''')
+
+conn.commit()
+conn.close()
+def add_student(name, grade):
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO students (name, grade) VALUES (?, ?)", (name, grade))
+    conn.commit()
+    conn.close()
+
+def add_teacher(name):
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO teachers (name) VALUES (?)", (name,))
+    conn.commit()
+    conn.close()
+
+def add_course(title, teacher_id):
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO courses (title, teacher_id) VALUES (?, ?)", (title, teacher_id))
+    conn.commit()
+    conn.close()
+
+def enroll_student(student_id, course_id):
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO enrollments (student_id, course_id) VALUES (?, ?)", (student_id, course_id))
+    conn.commit()
+    conn.close()
+def get_students():
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM students")
+    students = cursor.fetchall()
+    conn.close()
+    return students
+
+def get_teachers():
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM teachers")
+    teachers = cursor.fetchall()
+    conn.close()
+    return teachers
+
+def get_courses():
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM courses")
+    courses = cursor.fetchall()
+    conn.close()
+    return courses
+
+def get_enrollments():
+    conn = sqlite3.connect("school.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM enrollments")
+    enrollments = cursor.fetchall()
+    conn.close()
+    return enrollments
+# Add students, teachers, and courses.
+add_student("Alice", 10)
+add_student("Bob", 11)
+add_teacher("Mr. Smith")
+add_course("Math 101", 1)
+
+# Enroll students in courses.
+enroll_student(1, 1)
+enroll_student(2, 1)
+
+# Retrieve data from the database.
+print("Students:")
+print(get_students())
+
+print("Teachers:")
+print(get_teachers())
+
+print("Courses:")
+print(get_courses())
+
+print("Enrollments:")
+print(get_enrollments())

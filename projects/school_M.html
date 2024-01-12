@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #555;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        .button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>School Management System</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Students</a>
+        <a href="#">Teachers</a>
+        <a href="#">Courses</a>
+    </nav>
+
+    <div class="container">
+        <div class="form">
+            <h2>Student Registration</h2>
+            <form>
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName"><br><br>
+
+                <label for="studentID">Student ID:</label>
+                <input type="text" id="studentID" name="studentID"><br><br>
+
+                <label for="DOB">Date of Birth:</label>
+                <input type="date" id="DOB" name="DOB"><br><br>
+
+                <label for="course">Course:</label>
+                <select id="course" name="course">
+                    <option value="Math">Math</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                </select><br><br>
+
+                <input type="submit" class="button" value="Register">
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form">
+            <h2>Teacher Registration</h2>
+            <form>
+                <label for="teacherName">Teacher Name:</label>
+                <input type="text" id="teacherName" name="teacherName"><br><br>
+
+                <label for="teacherID">Teacher ID:</label>
+                <input type="text" id="teacherID" name="teacherID"><br><br>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject"><br><br>
+
+                <input type="submit" class="button" value="Register">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
